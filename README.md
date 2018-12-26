@@ -4,7 +4,7 @@
 制作環境<br>
   ・OS Windows7<br>
   ・IDE eclipse v4.5<br>
-  ・テキストエディタ 
+  ・テキストエディタ Atom
  
 使用言語<br>
   ・JAVA (使用フレームワーク Struts2)
