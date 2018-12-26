@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<constant name="struts.devMode" value="true"/>
+
+<package name="com.internousdev.sample_site2.action" extends="struts-default">
+
+<!-- ホーム -->
+<action name="HomeAction" class="com.internousdev.sample_site2.action.HomeAction" method="execute">
+	<result name="login">login.jsp</result>
+	<result name="success">buyitem.jsp</result>
+</action>
+<!-- ホームへ戻る -->
+<action name="GoHomeAction" class="com.internousdev.sample_site2.action.GoHomeAction" method="execute">
+	<result>home.jsp</result>
+</action>
+<!-- ログアウト -->
+<action name="LogoutAction" class="com.internousdev.sample_site2.action.LogoutAction" method="execute">
+	<result>home.jsp</result>
+</action>
+<!-- ログイン-->
+<action name="LoginAction" class="com.internousdev.sample_site2.action.LoginAction" method="execute">
+	<result name="success">buyitem.jsp</result>
+	<result name="error">loginError.jsp</result>
+</action>
+<!-- ユーザー登録 -->
+<action name="UserCreateAction" class="com.internousdev.sample_site2.action.UserCreateAction" method="execute">
+	<result name="success">userCreate.jsp</result>
+	<result name="back">login.jsp</result>
+</action>
+<!-- 入力確認 -->
+<action name="UserCreateConfirmAction" class="com.internousdev.sample_site2.action.UserCreateConfirmAction" method="execute">
+	<result name="success">userCreateConfirm.jsp</result>
+	<result name="error">userCreate.jsp</result>
+</action>
+<!-- ユーザー登録完了 -->
+<action name="UserCreateCompleteAction" class="com.internousdev.sample_site2.action.UserCreateCompleteAction" method="execute">
+	<interceptor-ref name="defaultStack"/>
+	<interceptor-ref name="token"/>
+	<result name="invalid.token">error.jsp</result>
+	<result name="success">userCreateComplete.jsp</result>
+</action>
+<!-- 問い合わせ -->
+<action name="InquiryAction" class="com.internousdev.sample_site2.action.InquiryAction" method="execute">
+	<result name="success">inquiry.jsp</result>
+</action>
+<!-- 問い合わせ内容確認 -->
+<action name="InquiryConfirmAction" class="com.internousdev.sample_site2.action.InquiryConfirmAction" method="execute">
+	<result name="success">inquiryConfirm.jsp</result>
+	<result name="cancel">inquiry.jsp</result>
+</action>
+<!-- 問い合わせ完了 -->
+<action name="InquiryCompleteAction" class="com.internousdev.sample_site2.action.InquiryCompleteAction" method="execute">
+	<interceptor-ref name="defaultStack"/>
+	<interceptor-ref name="token"/>
+	<result name="invalid.token">error.jsp</result>
+	<result name="success">inquiryComplete.jsp</result>
+</action>
+<!-- Aboutページ -->
+<action name="AboutAction" class="com.internousdev.sample_site2.action.AboutAction" method="execute">
+	<result name="success">about.jsp</result>
+</action>
+<!-- 購入 -->
+<action name="BuyItemAction" class="com.internousdev.sample_site2.action.BuyItemAction" method="execute">
+	<result name="success">buyitemConfirm.jsp</result>
+	<result name="back">buyitem.jsp</result>
+</action>
+<!-- 購入確認～購入完了 -->
+<action name="BuyItemConfirmAction" class="com.internousdev.sample_site2.action.BuyItemConfirmAction" method="execute">
+	<interceptor-ref name="defaultStack"/>
+	<interceptor-ref name="token"/>
+	<result name="invalid.token">error.jsp</result>
+	<result name="success">buyitemComplete.jsp</result>
+	<result name="cancel">buyitem.jsp</result>
+</action>
+
+<!-- 商品追加 -->
+<action name="ItemAddAction" class="com.internousdev.sample_site2.action.ItemAddAction" method="execute">
+	<result name="success">itemAdd.jsp</result>
+</action>
+<!-- 商品追加確認 -->
+<action name="ItemAddConfirmAction" class="com.internousdev.sample_site2.action.ItemAddConfirmAction" method="execute">
+	<result name="success">itemAddConfirm.jsp</result>
+	<result name="cancel">itemAdd.jsp</result>
+</action>
+<!-- 商品追加完了 -->
+<action name="ItemAddCompleteAction" class="com.internousdev.sample_site2.action.ItemAddCompleteAction" method="execute">
+<!-- 	<interceptor-ref name="defaultStack"/> -->
+<!-- 	<interceptor-ref name="token"/> -->
+<!-- 	<result name="invalid.token">error.jsp</result> -->
+	<result name="success">itemAddComplete.jsp</result>
+</action>
+<!-- 管理者ページへ戻る -->
+<action name="GoAdminAction" class="com.internousdev.sample_site2.action.GoAdminAction" method="execute">
+	<result name="success">admin.jsp</result>
+</action>
+<!-- 商品一覧 -->
+<action name="ItemListAction" class="com.internousdev.sample_site2.action.ItemListAction" method="execute">
+	<result name="success">itemlist.jsp</result>
+</action>
+<!-- ユーザー一覧 -->
+<action name="UserListAction" class="com.internousdev.sample_site2.action.UserListAction" method="execute">
+	<result name="success">userlist.jsp</result>
+</action>
+<!-- 問い合わせ一覧 -->
+<action name="InquriyListAction" class="com.internousdev.sample_site2.action.InquriyListAction" method="execute">
+	<result name="success">inquirylist.jsp</result>
+</action>
+<!-- 削除関連 -->
+<!-- 問い合わせ -->
+<action name="InquiryDeleteConfirmAction" class="com.internousdev.sample_site2.action.InquiryDeleteConfirmAction" method="execute">
+	<result name="success">inquirylistdeleteConfirm.jsp</result>
+</action>
+<action name="InquiryDeleteCompleteAction" class="com.internousdev.sample_site2.action.InquiryDeleteCompleteAction" method="execute">
+	<result name="success">inquirylistdeleteComplete.jsp</result>
+	<result name="cancel">inquirylist.jsp</result>
+</action>
+<!-- 商品 -->
+<action name="ItemDeleteConfirmAction" class="com.internousdev.sample_site2.action.ItemDeleteConfirmAction" method="execute">
+	<result name="success">itemdeleteConfirm.jsp</result>
+</action>
+<action name="ItemDeleteCompleteAction" class="com.internousdev.sample_site2.action.ItemDeleteCompleteAction" method="execute">
+	<result name="success">itemdeleteComplete.jsp</result>
+	<result name="cancel">itemlist.jsp</result>
+</action>
+</package>
+</struts>
